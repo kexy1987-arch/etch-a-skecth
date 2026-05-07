@@ -1,0 +1,28 @@
+#sketch-pad{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blanchedalmond;
+    width: 450px;
+    height: 450px;
+    margin: auto;
+}
+
+#tool-bar{
+    background-color: rgb(255, 153, 0);
+    width: 480px;
+    height: 100px;
+    aspect-ratio: 1/1;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+.square{
+    border: 1px solid;
+    height: 30px;
+    aspect-ratio: 1/1;
+    margin: 0px 0px;
+}
+
+.sq-hover{
+    background-color: rgba(0, 0, 0, 0.999);
+}
