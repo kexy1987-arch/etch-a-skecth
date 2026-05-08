@@ -1,4 +1,15 @@
 const sketchPad = document.getElementById("sketch-pad");
+const random = document.getElementById("random");
+const light = document.getElementById("lighter");
+const dark = document.getElementById("darker");
+const clear = document.getElementById("clear");
+
+let tool = "";
+
+random.addEventListener("click", ()=> tool = "random");
+light.addEventListener("click", () => tool = "light");
+dark.addEventListener("click", () => tool = "dark");
+
 
 let numOfSquares = 16;
 for (let i = 0; i < numOfSquares * numOfSquares; i++) {
@@ -29,10 +40,60 @@ function createDivs(){
     sketchPad.appendChild(divs)
     return divs;
 }
+
+function reset(){
+    tool = ""
+}
+
+function clearing(){
+    const squares = document.querySelectorAll(".square")
+    squares.forEach(sq => sq.style.backgroundColor = "")
+    console.log(tool)
+}
+
+function randomColor(e){
+    const r = Math.floor(Math.random()* 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    e.target.style.backgroundColor = `rgba(${r}, ${g}, ${b})`
+    console.log(r, g, b)
+}
+
+function darker(){
+    console.log(tool)
+    const bg = e.target.style.backgroundColor;
+    const splitted = bg.split("");
+    const a = splitted[16]
+    console.log(bg)
+
+    if (e.target.style.backgroundColor) {
+        e.target.style.backgroundColor = `rgba(0, 0, 0, 0.${a + 1}`;
+        return;
+    }
+}
+
+function lighter(e){
+    const bg = e.target.style.backgroundColor;
+    const splitted = bg.split("");
+    const a = splitted[16]
+    console.log(bg)
+
+    if (e.target.style.backgroundColor) {
+        e.target.style.backgroundColor = `rgba(0, 0, 0, 0.${a - 1}`;
+        return;
+    }
+}
 function draw(e){
-        console.log(e.target.style.backgroundColor);
-  
-    e.target.classList.add("sq-hover")
+    if(tool === "random"){
+        randomColor(e);
+    }else if(tool === "light"){
+        lighter(e);
+    }else if(tool === "dark"){
+        darker();
+    }else{
+        e.target.style.background = "rgba(0, 0, 0, 0.995)";
+    }
+    console.log(tool)
 }
 
 let drawing = false;

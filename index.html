@@ -9,7 +9,15 @@
 <body>
     <main>
         <div id="tool-bar">
-            <button onclick="getUserInput()">Set Grid</button>
+            <h1>Eatch a Skeatch</h1>
+            <div id="btn-container">
+                <button type="button" onclick="getUserInput()">Set Grid</button>
+                <button type="button" id="random" >Random color</button>
+                <button type="button" id="lighter" >Lighter</button>
+                <button type="button" id="darker" >Darker</button>
+                <button type="button" onclick="clearing()" >Clear</button>
+                <button type="button" onclick="reset()">Reset tool</button>
+            </div>
         </div>
         <div>
             <div id="sketch-pad">
